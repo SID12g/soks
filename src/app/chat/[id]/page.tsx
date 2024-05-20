@@ -25,6 +25,18 @@ const Chat = ({ params }: { params: { id: string } }) => {
   const { isMounted } = useMounted();
   const isLogin = status === "authenticated";
 
+  // useEffect(() => {
+  //   const fetchChats = async () => {
+  //     let db = (await connectDB).db("chat");
+  //     let chats = await db
+  //       .collection("chatting")
+  //       .find({ groupId: params.id })
+  //       .toArray();
+  //     setMessages(chats);
+  //   };
+  //   fetchChats();
+  // }, [params.id]);
+
   const sendMessage = async () => {
     if (currentMessage) {
       const res = await fetch("/api/chat", {
@@ -45,7 +57,6 @@ const Chat = ({ params }: { params: { id: string } }) => {
     socket?.on("message", (message: IMessage) => {
       setMessages((prev) => [...prev, message]);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [socket]);
 
   useEffect(() => {

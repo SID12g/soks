@@ -16,10 +16,14 @@ const chatHandler = async (
       content: message.content,
     };
     db.collection("chatting").insertOne(data);
+    let chat = await db
+      .collection("users")
+      .find({ groupId: message.groupId })
+      .toArray();
 
     res.socket.server.io.emit("message", message);
 
-    res.status(201).json(message);
+    res.status(201).json(chat);
   }
 };
 
