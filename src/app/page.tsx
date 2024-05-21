@@ -44,7 +44,7 @@ export default async function Home() {
           <div>
             {chats.map((a, i) => (
               <Link key={i} href={`/chat/${a._id.toString()}`}>
-                {a.name.toString()}
+                <div>{a.name.toString()}</div>
               </Link>
             ))}
           </div>

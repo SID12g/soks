@@ -1,18 +1,19 @@
-'use client';
+"use client";
 
-import {Button} from '@mui/material';
-import {useRouter} from 'next/navigation';
+import { Button } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 const BackButton = () => {
   const router = useRouter();
 
   const handleGoBack = () => {
+    router.refresh();
     router.back();
   };
 
   return (
     <>
-      <Button variant='contained' onClick={handleGoBack}>
+      <Button variant="contained" onClick={handleGoBack}>
         뒤로가기
       </Button>
     </>
