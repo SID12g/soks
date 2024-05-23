@@ -18,6 +18,10 @@ export default async function Home() {
   return (
     <main className={styles.main}>
       <div style={{ display: "flex" }}>
+        url : {process.env.URL}
+        <br />
+        auth url : {process.env.NEXTAUTH_URL}
+        <br />
         {session ? session.user.user.username + " 님" : "로그인 필요"}
         <div style={{ width: 10 }} />
         {session ? (
